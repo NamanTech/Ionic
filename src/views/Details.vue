@@ -2,10 +2,10 @@
   <ion-page>
     <ion-header class="nav" translucent>
       <div class="head" >My-Store</div>
-    <ion-button class="cart" size="small"> <router-link to="/Cart"> Cart({{ cart }})</router-link> </ion-button>
+      <ion-button class="cart" size="small"><router-link to="/Cart">Cart({{ cart }})</router-link> </ion-button>
     </ion-header>
     <ion-content fullscreen>
-      <ion-card v-for="item in itemList" :key="item.id" class="card">
+      <ion-card class="card">
         <img
           :src="item.image"
           class="card-img"
@@ -16,14 +16,13 @@
           <ion-card-subtitle style="font-size: 30px; "> ${{ item.price }}</ion-card-subtitle>
           <ion-card-title> {{ item.title }}</ion-card-title>
         </ion-card-header>
-        <ion-button><router-link to="/Details"> Buy</router-link> </ion-button>
+        <ion-button> Buy </ion-button>
         <ion-button color="warning" @click="addTocart()"
           >Add TO Cart</ion-button>
       </ion-card>
     </ion-content>
   </ion-page>
 </template>
-
 <script >
 import {
   IonCard,
@@ -50,13 +49,13 @@ export default defineComponent({
   data() {
     return {
       cart: 0,
-      itemList: [],
+      item: {},
     };
   },
   mounted() {
-    fetch("https://fakestoreapi.com/products")
+    fetch("https://fakestoreapi.com/products/1")
       .then((res) => res.json())
-      .then((json) => (this.itemList = json));
+      .then((json) => (this.item = json));
   },
   methods: {
     addTocart() {

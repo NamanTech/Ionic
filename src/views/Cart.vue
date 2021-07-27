@@ -2,35 +2,15 @@
   <ion-page>
     <ion-header class="nav" translucent>
       <div class="head" >My-Store</div>
-    <ion-button class="cart" size="small"> <router-link to="/Cart"> Cart({{ cart }})</router-link> </ion-button>
+       <h2 style="padding-top: 20px; padding-left: 40px">Shopping-Cart</h2>
     </ion-header>
-    <ion-content fullscreen>
-      <ion-card v-for="item in itemList" :key="item.id" class="card">
-        <img
-          :src="item.image"
-          class="card-img"
-          style="width: 100%"
-          alt="image"
-        />
-        <ion-card-header>
-          <ion-card-subtitle style="font-size: 30px; "> ${{ item.price }}</ion-card-subtitle>
-          <ion-card-title> {{ item.title }}</ion-card-title>
-        </ion-card-header>
-        <ion-button><router-link to="/Details"> Buy</router-link> </ion-button>
-        <ion-button color="warning" @click="addTocart()"
-          >Add TO Cart</ion-button>
-      </ion-card>
-    </ion-content>
   </ion-page>
 </template>
 
 <script >
+
+
 import {
-  IonCard,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonContent,
   IonHeader,
   IonPage,
 } from "@ionic/vue";
@@ -39,24 +19,19 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "Home",
   components: {
-    IonContent,
     IonHeader,
     IonPage,
-    IonCard,
-    IonCardHeader,
-    IonCardSubtitle,
-    IonCardTitle,
   },
   data() {
     return {
-      cart: 0,
-      itemList: [],
+      cartlist: []
+     
     };
   },
-  mounted() {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => (this.itemList = json));
+  mounted(){
+      fetch('https://fakestoreapi.com/carts/1')
+            .then(res=>res.json())
+            .then(json=>this.cartlist=json)
   },
   methods: {
     addTocart() {
@@ -90,7 +65,6 @@ margin-left: 20px;
   display: inline-block;
 }
 .cart {
-  color: rgb(255, 255, 255);
   padding: 1px 2px;
   font-size: 16px;
   position: relative;
