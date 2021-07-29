@@ -4,12 +4,29 @@
       <div class="head" >My-Store</div>
        <h2 style="padding-top: 20px; padding-left: 40px">Shopping-Cart</h2>
     </ion-header>
+     <ion-card v-for="product in cartlist" :key="product.id" class="card">
+        <img
+          :src="product.image"
+          class="card-img"
+          style="width: 100%"
+          alt="image"
+        />
+        <ion-card-header>
+          <ion-card-subtitle style="font-size: 30px; ">{{ product.id}}</ion-card-subtitle>
+          <ion-card-title>{{ cart.userId }}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+      <div v-for="product in cartlist" :key="product.id" class="card">  
+    <div class="product">
+      <h5 style="font-size: 20px; margin-left: 20px; top: 10px">
+        {{ product.id}}
+      </h5>
+    </div>
+  </div>
   </ion-page>
 </template>
 
 <script >
-
-
 import {
   IonHeader,
   IonPage,
@@ -17,13 +34,14 @@ import {
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Home",
+  name: "Cart",
   components: {
     IonHeader,
     IonPage,
   },
   data() {
     return {
+      cart: 0,
       cartlist: []
      
     };

@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header class="nav" translucent>
       <div class="head" >My-Store</div>
-    <ion-button class="cart" size="small"> <router-link to="/Cart"> Cart({{ cart }})</router-link> </ion-button>
+    <ion-button class="cart" size="small"> <router-link style="    background: rgb(243, 217, 217);" to="/Cart"> Cart({{ cart }})</router-link> </ion-button>
     </ion-header>
     <ion-content fullscreen>
       <ion-card v-for="item in itemList" :key="item.id" class="card">
@@ -96,6 +96,7 @@ margin-left: 20px;
   position: relative;
   margin-left: 330px;
   top: -35px;
+      background: rgb(243, 217, 217);
 }
 .card-img {
   height: 300px;
